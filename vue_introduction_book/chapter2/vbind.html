@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <script src="https://unpkg.com/vue@2.5.17"></script>
 <div id="app">
-  <p>{{ items[0].name }}: {{ items[0].price }} × {{ items[0].quantity }}</p>
-  <p>小計: {{ totalPrice | numberWithDelimiter }}円</p>
-  <p>合計(税込): {{ totalPriceWithTax | numberWithDelimiter }}円</p>
-  <!-- 属性に応じて、表示を出し分けする -->
-  <!-- 
-    v-showの場合はdisplayプロパティの変更による切り替え
-    v-ifの場合はDOM要素の追加、削除による切り替え
-  -->
-  <p v-show="!canBuy">
-    {{ 1000 | numberWithDelimiter }}円以上からご購入いただけます
-  </p>
-  <p v-if="!canBuy">
-    {{ 1000 | numberWithDelimiter }}円以上からご購入いただけます
-  </p>
+  <!-- 1000円以上になるまで、赤く表示する -->
+  <div :style="errorMessageStyle">
+    <p>{{ items[0].name }}: {{ items[0].price }} × {{ items[0].quantity }}</p>
+    <p>小計: {{ totalPrice | numberWithDelimiter }}円</p>
+    <p>合計(税込): {{ totalPriceWithTax | numberWithDelimiter }}円</p>
+    <p v-show="!canBuy">
+      {{ 1000 | numberWithDelimiter }}円以上からご購入いただけます
+    </p>
+  </div>
 </div>
 
 <script>
@@ -60,6 +55,12 @@ var vm = new Vue({
     },
     canBuy: function() {
       return this.totalPrice >= 1000 // 1000円以上から購入可能にする
+    },
+    errorMessageStyle: function() {
+      return {
+        border: this.canBuy ? '' : '1px solid red',
+        color: this.canBuy ? '' : 'red'
+      }
     }
   }
 })
