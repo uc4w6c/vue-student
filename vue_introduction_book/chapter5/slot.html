@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<title>Vue app</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="app">
+  <my-page>
+    <!-- name 属性値が header の <slot>と置き換わるコンテンツ -->
+    <h1 slot="header">This is my page</h1>
+    <!-- 単一スロットと置き換わるコンテンツ -->
+    <p>
+      Lorem ipsum dolor sit amet, duo ex illum debet inermis, putant scaevola id vim, cu platonem cotidieque vix.
+    </p>
+    <!-- name 属性値が footer の <slot>と置き換わるコンテンツ -->
+    <p slot="footer">This is footer</p>
+  </my-page>
+</div>
+
+<script>
+  var MyPage = {
+    template: `
+      <div>
+        <header>
+          <!-- ヘッダーのスロット(名前付きスロット) -->
+          <slot name="header"></slot>
+        </header>
+        <main>
+          <!-- ボディのスロット -->
+          <slot></slot>
+        </main>
+        <footer>
+          <!-- フッターのスロット -->
+          <slot name="footer"></slot>
+        </footer>
+      </div>
+    `
+  }
+
+  new Vue({
+    el: '#app',
+    components: {
+      MyPage: MyPage
+    }
+  })
+</script>
+
