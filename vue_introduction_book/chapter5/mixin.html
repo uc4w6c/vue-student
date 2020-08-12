@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<title>Vue app</title>
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="app">
+  <icon-share-button></icon-share-button>
+  <text-share-button></text-share-button>
+</div>
+
+<script>
+  var Sharable = {
+    data: function() {
+      return {
+        _isProcessing: false
+      }
+    },
+    methods: {
+      share: function() {
+        if (this._isProcessing) {
+          return
+        }
+        if (!window.confirm('シェアしますか?')) {
+          return
+        }
+        this._isProcessing = true
+        // 実際はここでSNSのSDKのAPIを呼び出す
+        setTimeout(() => {
+          window.alert('シェアしました')
+          this._isProcessing = false
+        }, 300)
+      }
+    }
+  }
+
+  var IconShareButton = {
+    mixins: [Sharable],
+    template: `
+      <button @click="share"><i class="fas fa-share-square"></i></button>
+    `
+  }
+
+  var TextShareButton = {
+    mixins: [Sharable],
+    template: `
+      <button @click="share">{{ buttonLabel }}</button>
+    `,
+    data: function() {
+      return {
+        buttonLabel: 'シェアする'
+      }
+    }
+  }
+
+  new Vue({
+    el: '#app',
+    components: {
+      IconShareButton,
+      TextShareButton
+    }
+  })
+</script>
+
