@@ -14,7 +14,13 @@ module.exports = function karmaConfig (config) {
     browsers: ['PhantomJS'],
     frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
     reporters: ['spec', 'coverage'],
-    files: ['./index.js'],
+    files: [
+      '../../node_modules/es6-promise/dist/es-promise.auto.js',
+      // 以下を追加してエラー解消
+      // npm install --save-dev babel-polyfill
+      '../../node_modules/babel-polyfill/dist/polyfill.js',
+      './index.js'
+    ],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },
