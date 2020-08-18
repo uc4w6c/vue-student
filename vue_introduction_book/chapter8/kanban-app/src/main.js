@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
+Vue.config.performance = true // NODE_EN 'development'で測定有効化
 
 // ErrorBoundaryコンポーネントのインストール
 Vue.component(ErrorBoundary.name, ErrorBoundary)
