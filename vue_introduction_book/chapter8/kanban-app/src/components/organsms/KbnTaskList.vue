@@ -1,6 +1,10 @@
 <template>
   <div class="task-list">
-    <div>{{ title.name }}</div>
+    <div class="list-header">
+      <textarea
+        v-model="title.name"
+        class="list-header-name" />
+    </div>
     <div
       v-for="task in title.taskList"
       :key="task.id"
@@ -80,5 +84,24 @@ export default {
   position: relative;
   text-decoration: none;
   z-index: 0;
+}
+.list-header {
+  flex: 0 0 auto;
+  padding: 10px 8px;
+  position: relative;
+  min-height: 20px;
+}
+.list-header-name {
+  background: transparent;
+  border-radius: 3px;
+  box-shadow: none;
+  font-weight: 600;
+  margin: -4px 0;
+  height: 20px;
+  min-height: 20px;
+  padding: 4px 8px;
+  resize: none;
+  max-height: 256px;
+  border: none;
 }
 </style>
