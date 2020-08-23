@@ -6,7 +6,12 @@
       :key="task.id"
       class="list-cards"
     >
-      <a href="#">{{ task.name }}</a>
+      <a
+        class="list-card"
+        href="#"
+      >
+        {{ task.name }}
+      </a>
     </div>
   </div>
 </template>
@@ -62,5 +67,18 @@ export default {
   padding: 0 4px;
   z-index: 1;
   min-height: 0;
+}
+.list-card {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  cursor: pointer;
+  display: block;
+  margin-bottom: 8px;
+  max-width: 300px;
+  min-height: 20px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
 }
 </style>
