@@ -1,11 +1,15 @@
+<template>
+  <KbnBoardTask />
+</template>
+
 <script>
-/* eslint-disable */
+import KbnBoardTask from '@/components/organsms/KbnBoardTask.vue'
+
 export default {
   name: 'KbnBoardView',
 
-  render (h) {
-    throw new Error('レンダリングに失敗しました!')
+  components: {
+    KbnBoardTask
   }
 }
-/* eslint-enable */
 </script>
