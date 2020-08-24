@@ -1,5 +1,5 @@
 <template>
-  <KbnBoardTask />
+  <KbnBoardTask @addTask="handleClick" />
 </template>
 
 <script>
@@ -10,6 +10,16 @@ export default {
 
   components: {
     KbnBoardTask
+  },
+
+  methods: {
+    handleClick (ev) {
+      return this.$store.dispatch('login', authInfo)
+        .then(() => {
+          this.$router.push({ path: '/' })
+        })
+        .catch(err => this.throwReject(err))
+    }
   }
 }
 </script>

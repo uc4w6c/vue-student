@@ -17,6 +17,16 @@
         {{ task.name }}
       </a>
     </div>
+    <div class="card-composer-container">
+      <a
+        href="#"
+        class="open-card-composer"
+        @click="handleClick"
+      >
+        <span class="icon-sm icon-add"/>
+        <span>タスクを追加</span>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -29,25 +39,14 @@ export default {
       type: Object,
       required: true
     }
-  }
-  /*
-  components: {
-    KbnLoginForm
   },
-  */
 
-  /*
   methods: {
-    handleLogin (authInfo) {
-      return this.$store.dispatch('login', authInfo)
-        .then(() => {
-          this.$router.push({ path: '/' })
-        })
-        .catch(err => this.throwReject(err))
-    },
-    throwReject (err) { return Promise.reject(err) }
+    // `click`イベントを発行
+    handleClick (ev) {
+      this.$emit('addTask', ev)
+    }
   }
-  */
 }
 </script>
 
@@ -103,5 +102,31 @@ export default {
   resize: none;
   max-height: 256px;
   border: none;
+}
+.card-composer-container {
+  min-height: 38px;
+  max-height: 38px;
+  display: flex;
+  justify-content: space-between;
+}
+.icon-sm {
+  height: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  width: 20px;
+}
+.icon-add {
+  content: "\E901";
+}
+.open-card-composer {
+  border-radius: 3px;
+  color: #5e6c84;
+  display: block;
+  flex: 1 0 auto;
+  margin: 2px 0 8px 8px;
+  padding: 4px 8px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
 }
 </style>
