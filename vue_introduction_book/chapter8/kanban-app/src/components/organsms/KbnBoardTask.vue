@@ -34,22 +34,22 @@ export default {
           id: 1,
           name: 'TODO',
           taskList: [
-            { id: 1, name: 'タスク1' },
-            { id: 2, name: 'タスク2' }
+            { id: 1, name: 'タスク1', description: 'タスク1説明' },
+            { id: 2, name: 'タスク2', description: 'タスク2説明' }
           ]
         },
         {
           id: 2,
           name: 'WIP',
           taskList: [
-            { id: 3, name: 'タスク3' }
+            { id: 3, name: 'タスク3', description: 'タスク3説明' }
           ]
         },
         {
           id: 3,
           name: 'DONE',
           taskList: [
-            { id: 4, name: 'タスク4' }
+            { id: 4, name: 'タスク4', description: 'タスク4説明' }
           ]
         }
       ]

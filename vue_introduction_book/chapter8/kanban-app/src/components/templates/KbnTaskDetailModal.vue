@@ -2,11 +2,46 @@
   <div class="window-overlay">
     <div class="window">
       <div class="window-wrapper">
-        <p>タスク詳細ページ</p>
+        <div class="card-detail-window">
+          <div class="card-detail-title">
+            <textarea
+              v-model="task.title"
+              class="card-title" />
+          </div>
+          <div class="card-detail-description">
+            <textarea
+              v-model="task.description"
+              class="card-description" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'KbnTaskDetailModal',
+
+  props: {
+    task: {
+      type: Object,
+      require: false,
+      'default': () => ({
+        title: '',
+        description: ''
+      })
+    }
+  } // ,
+  /*
+  methods: {
+    handleClick (ev) {
+
+    }
+  }
+  */
+}
+</script>
 
 <style scoped>
 .window-overlay {
@@ -37,5 +72,26 @@
   z-index: 25;
 }
 .window-wrapper {
+}
+.card-detail-window {
+  min-height: 600px;
+}
+.card-detail-title {
+  margin: 12px 40px 8px 56px;
+  min-height: 32px;
+  position: relative;
+  z-index: 1;
+}
+.card-title {
+  height: 32px;
+  background: #fff;
+  box-shadow: none;
+}
+.card-detail-description {
+}
+.card-description {
+  min-height: 108px;
+  background: #fff;
+  box-shadow: none;
 }
 </style>
