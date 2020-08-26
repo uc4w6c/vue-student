@@ -12,7 +12,9 @@
       :key="title.id"
       class="list-wrapper"
     >
-      <KbnTaskList :title="title" />
+      <KbnTaskList
+        :title="title"
+        @addTask="handleClick" />
     </div>
   </div>
 </template>
@@ -53,6 +55,13 @@ export default {
           ]
         }
       ]
+    }
+  },
+
+  methods: {
+    // `click`イベントを発行
+    handleClick (ev) {
+      this.$emit('addTask', ev)
     }
   }
   /*

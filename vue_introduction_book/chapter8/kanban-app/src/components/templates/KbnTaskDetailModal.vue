@@ -68,7 +68,8 @@ export default {
   margin: 48px 0 80px;
   overflow: hidden;
   position: relative;
-  width: 768px;
+  height: 300px;
+  width: 600px;
   z-index: 25;
 }
 .window-wrapper {
@@ -86,12 +87,17 @@ export default {
   height: 32px;
   background: #fff;
   box-shadow: none;
+  resize: none;
+  width: 100%;
 }
 .card-detail-description {
+  margin: 12px 40px 8px 56px;
 }
 .card-description {
   min-height: 108px;
   background: #fff;
   box-shadow: none;
+  resize: none;
+  width: 100%;
 }
 </style>

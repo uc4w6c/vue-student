@@ -5,7 +5,7 @@
     <div
       v-show="showContent"
       id="overlay"
-      @click="closeModal"
+      @closeModal="closeModal"
     >
       <KbnTaskDetailModal />
     </div>
