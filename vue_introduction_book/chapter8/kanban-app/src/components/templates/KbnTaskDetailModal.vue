@@ -2,16 +2,21 @@
   <div class="window-overlay">
     <div class="window">
       <div class="window-wrapper">
-        <div class="card-detail-window">
+        <div
+          class="card-detail-window"
+          @click="stopEvent"
+        >
           <div class="card-detail-title">
             <textarea
               v-model="task.title"
-              class="card-title" />
+              class="card-title"
+              @blur="cardTitleBlur" />
           </div>
           <div class="card-detail-description">
             <textarea
               v-model="task.description"
-              class="card-description" />
+              class="card-description"
+              @blur="cardDescriptionBlur" />
           </div>
         </div>
       </div>
@@ -32,14 +37,42 @@ export default {
         description: ''
       })
     }
-  } // ,
-  /*
+  },
+  data () {
+    return {
+      beforeTitle: '',
+      beforeDescription: ''
+    }
+  },
+  beforeMount () {
+    this.beforeTitle = this.task.title
+    this.beforeDescription = this.task.description
+  },
   methods: {
+    cardTitleBlur () {
+      if (this.task.title === '') {
+        this.task.title = this.beforeTitle
+      } else {
+        this.beforeTitle = this.task.title
+      }
+    },
+    cardDescriptionBlur () {
+      if (this.task.description === '') {
+        this.task.description = this.beforeDescription
+      } else {
+        this.beforeDescription = this.task.description
+      }
+    },
+    // `stopEvent`イベントを発行
+    stopEvent (ev) {
+      this.$emit('stopEvent', ev)
+    }
+    /*
     handleClick (ev) {
 
     }
+    */
   }
-  */
 }
 </script>
 

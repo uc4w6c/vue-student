@@ -5,9 +5,9 @@
     <div
       v-show="showContent"
       id="overlay"
-      @closeModal="closeModal"
+      @click="closeModal"
     >
-      <KbnTaskDetailModal />
+      <KbnTaskDetailModal @stopEvent="stopEvent" />
     </div>
   </div>
 </template>
@@ -36,6 +36,10 @@ export default {
     },
     closeModal () {
       this.showContent = false
+    },
+    stopEvent () {
+      console.log('stop')
+      event.stopPropagation()
     }
   }
 }
