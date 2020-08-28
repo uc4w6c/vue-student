@@ -62,6 +62,15 @@ export default {
     // `click`イベントを発行
     handleClick (ev) {
       this.$emit('addTask', ev)
+    },
+    changeTask (newTask) {
+      if (this.titleList.filter(task => task.id === newTask.id).length >= 1) {
+        this.titleList.filter(task => task.id === newTask.id)
+          .forEach(task => {
+            task.name = newTask.name
+            task.description = newTask.description
+          })
+      } // else {}
     }
   }
   /*

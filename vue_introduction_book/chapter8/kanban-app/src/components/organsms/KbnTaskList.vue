@@ -13,6 +13,7 @@
       <a
         class="list-card"
         href="#"
+        @click="editTask(title.id, task)"
       >
         {{ task.name }}
       </a>
@@ -46,6 +47,12 @@ export default {
     handleClick (ev) {
       this.$emit('addTask', ev)
     }
+    /*
+    ,
+    editTask (id, task) {
+
+    }
+    */
   }
 }
 </script>

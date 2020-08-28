@@ -52,16 +52,18 @@ export default {
     cardTitleBlur () {
       if (this.task.title === '') {
         this.task.title = this.beforeTitle
-      } else {
-        this.beforeTitle = this.task.title
+        return
       }
+      this.beforeTitle = this.task.title
+      this.$emit('changeTask', this.task)
     },
     cardDescriptionBlur () {
       if (this.task.description === '') {
         this.task.description = this.beforeDescription
-      } else {
-        this.beforeDescription = this.task.description
+        return
       }
+      this.beforeDescription = this.task.description
+      this.$emit('changeTask', this.task)
     },
     // `stopEvent`イベントを発行
     stopEvent (ev) {
